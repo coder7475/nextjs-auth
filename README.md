@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next Auth
+
+Authenticated Dashboard with Next.js App Router
+
 
 ## Getting Started
 
@@ -19,6 +22,28 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Project Structure
+
+```
+my-auth-dashboard/
+├── app/
+│   ├── globals.css          # Global styles (create if missing)
+│   ├── layout.tsx           # Root layout (create/update)
+│   ├── page.tsx             # Home/landing page (create)
+│   ├── login/
+│   │   └── page.tsx         # ✅ Login page (created)
+│   └── dashboard/
+│       └── page.tsx         # Dashboard page (create next)
+├── lib/
+│   └── auth.ts              # ✅ Auth helpers (created)
+├── middleware.ts            # Route protection (next step)
+├── next.config.js           # Next.js config
+├── tailwind.config.ts       # Tailwind config (if using)
+├── tsconfig.json
+├── package.json
+└── README.md
+```
 
 ## Learn More
 
