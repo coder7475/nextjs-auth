@@ -1,7 +1,13 @@
-async function loginUser(email: string, password: string) {
-  const response = await fetch('https://reqres.in/api/login', {
+import { REQRES_API_KEY, REQRES_API_URL } from "@/config/config";
+import { LoginResponse } from "@/types/types";
+
+export async function loginUser(email: string, password: string): Promise<LoginResponse> {
+  const response = await fetch(`${REQRES_API_URL}/login`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'application/json',
+      "x-api-key": REQRES_API_KEY
+    },
     body: JSON.stringify({ email, password }),
   });
 
@@ -11,10 +17,5 @@ async function loginUser(email: string, password: string) {
     throw new Error(data.error || 'Login failed');
   }
 
-  return data.token;
+  return data as LoginResponse;
 }
-
-// Usage
-loginUser('eve.holt@reqres.in', 'cityslicka')
-  .then(token => console.log('Logged in token:', token))
-  .catch(err => console.error('Login error:', err.message));
