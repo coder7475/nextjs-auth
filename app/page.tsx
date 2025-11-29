@@ -1,6 +1,16 @@
+import { AUTH_COOKIE_NAME } from '@/config/config';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+    const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
+  
+  if (token) {
+    redirect('/dashboard');
+  }
+
   return (
     <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-xl text-center">

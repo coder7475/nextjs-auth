@@ -1,7 +1,18 @@
 import LoginForm from '@/components/LoginForm';
+import { AUTH_COOKIE_NAME } from '@/config/config';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
+
+  if (token) {
+    redirect('/dashboard');
+  }
+
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
