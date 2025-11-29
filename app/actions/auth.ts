@@ -21,9 +21,7 @@ export async function loginAction(
     }
 
     try {
-        // const loginData: LoginData = await loginUser(validated.data.email, validated.data.password);
-        // TODO: Remove below and uncomment above in production
-        const loginData: LoginData = { token: 'QpwL5tke4Pnpja7X4' }
+        const loginData: LoginData = await loginUser(validated.data.email, validated.data.password);
         
         const cookieStore = await cookies();
         // Set secure HttpOnly cookie (server-side, XSS-proof)
@@ -31,6 +29,7 @@ export async function loginAction(
             httpOnly: true,
             secure: true,
             sameSite: 'none',
+            path: '/',
             maxAge: 60 * 60 * 24, // 1 day
         });        
         
