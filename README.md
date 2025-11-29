@@ -13,6 +13,11 @@ Lightweight Next.js (App Router) authentication example with a protected dashboa
 ```bash
 pnpm install
 ```
+- **Copy Env:**
+
+```bash
+cp .env.example .env
+```
 
 - **Run (dev):**
 
@@ -74,17 +79,3 @@ This app is ready to deploy to Vercel or any platform that supports Next.js. For
 - If ports conflict, ensure `3000` is free or set `PORT` when starting in production.
 - If TypeScript errors appear, run `pnpm install` to ensure types are available and check `tsconfig.json`.
 
-**Next steps (suggested)**
-
-- Add real session management (JWT or cookie sessions) and persist users to a database.
-- Add tests and CI checks.
-- Harden auth flows and add CSRF protection for production.
-
-If you'd like, I can:
-- add an example `.env.example` with common env keys,
-- wire up a simple in-memory user store for local testing, or
-- create a Vercel deployment guide tailored to this repo.
-
----
-
-If you want me to commit these changes and run the app locally, tell me which action you'd like next.
