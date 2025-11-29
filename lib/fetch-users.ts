@@ -1,18 +1,28 @@
-import { REQRES_API_KEY, REQRES_API_URL } from "@/config/config";
+import { AUTH_COOKIE_NAME, REQRES_API_KEY, REQRES_API_URL } from "@/config/config";
 import { UserData } from "@/types/types";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function fetchUserData(): Promise<UserData> {
-  const response = await fetch(`${REQRES_API_URL}/users/2`, {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
+
+  if (!token) {
+    redirect('/login');
+  }
+
+  const res = await fetch(`${REQRES_API_URL}/users/2`, {
     headers: {
       'X-API-Key': REQRES_API_KEY,
     },
     cache: 'no-store',
-  });
+  });  
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch user data: ${response.statusText}`);
+  if (!res.ok) {
+    redirect('/login');
   }
 
-  const data: UserData = await response.json();
+  const data: UserData = await res.json();
+
   return data;
 }
