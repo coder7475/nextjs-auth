@@ -8,18 +8,24 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-indigo-600 tracking-wide uppercase">
+                  Auth Dashboard
+                </span>
+                <h1 className="text-xl font-bold text-gray-900">
+                  Welcome back
+                </h1>
+              </div>
             </div>
             <div className="flex items-center space-x-4">
-              {/* Logout button uses server action via form */}
               <form action={logout}>
                 <button
                   type="submit"
-                  className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 text-sm font-medium transition-colors"
+                  className="bg-red-600 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-red-700 text-sm font-medium transition-colors"
                 >
                   Logout
                 </button>
@@ -27,12 +33,16 @@ export default async function DashboardPage() {
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md mx-auto bg-white overflow-hidden shadow rounded-lg">
           <div className="p-8 text-center">
+            <p className="text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-2">
+              Profile Overview
+            </p>
+
             <div className="mx-auto h-24 w-24 mb-6 relative">
               <Image
                 src={userData?.data.avatar || ''}
@@ -61,12 +71,12 @@ export default async function DashboardPage() {
             <div className="inline-flex items-center px-4 py-2 border border-green-300 rounded-full bg-green-50">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
               <span className="text-xs font-medium text-green-800">
-                Authenticated
+                Authenticated session
               </span>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
