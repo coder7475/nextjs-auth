@@ -16,10 +16,6 @@ export interface LoginError {
   error: string;
 }
 
-export interface LoginActionState {
-  error?: string;
-}
-
 export interface LoginData {
     token: string;
 }

@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { loginUser } from '@/lib/login-user';
 import { AUTH_COOKIE_NAME } from '@/config/config';
-import { LoginActionState, LoginData } from '@/types/types';
+import { LoginData } from '@/types/types';
 import { loginSchema } from '@/types/schema';
 
 export async function loginAction(
