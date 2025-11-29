@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default async function DashboardPage() {
   const userData = await fetchUserData();
-  console.log(userData);
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}

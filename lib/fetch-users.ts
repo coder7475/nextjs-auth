@@ -1,18 +1,8 @@
-const REQRES_API_URL = process.env.REQRES_API_URL || 'https://reqres.in/api/users/2';
-const REQRES_API_KEY = process.env.REQRES_API_KEY || '****';
-
-export interface UserData {
-  data: {
-    id: number;
-    email: string;
-    first_name: string;
-    last_name: string;
-    avatar: string;
-  };
-}
+import { REQRES_API_KEY, REQRES_API_URL } from "@/config/config";
+import { UserData } from "@/types/types";
 
 export async function fetchUserData(): Promise<UserData> {
-  const response = await fetch(REQRES_API_URL, {
+  const response = await fetch(`${REQRES_API_URL}/users/2`, {
     headers: {
       'X-API-Key': REQRES_API_KEY,
     },
